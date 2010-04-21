@@ -1,24 +1,40 @@
 ﻿<Window x:Class="WpfClassProject.Shell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:WpfClassProject.DataContexts.DesignTimeContexts"
     Title="WpfTunes" Height="400" Width="600">
+    
+    <Window.Resources>
+        <DataTemplate x:Key="PlaylistItemTemplate">
+            <TextBlock Text="{Binding Path=Name}" />
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid>
+        <Grid.DataContext>
+            <c:ShellDesignData />
+        </Grid.DataContext>
+        
         <Button Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="button1" VerticalAlignment="Top" Width="23">&lt;</Button>
         <Button Height="23" HorizontalAlignment="Left" Margin="70,12,0,0" Name="button2" VerticalAlignment="Top" Width="23">&gt;</Button>
         <Button Height="23" HorizontalAlignment="Left" Margin="41,12,0,0" Name="button3" VerticalAlignment="Top" Width="23">P</Button>
-        <ListBox HorizontalAlignment="Left" Margin="0,72,0,12" Name="listBox1" Width="93">
-            <ListBoxItem>Awesome</ListBoxItem>
-            <ListBoxItem>Awesomer</ListBoxItem>
-        </ListBox>
+        <ListBox HorizontalAlignment="Left" Margin="0,72,0,12" Name="lbPlaylists" Width="93"
+                 ItemsSource="{Binding Path=Playlists}" 
+                 ItemTemplate="{StaticResource PlaylistItemTemplate}" />
         <Label Height="25" HorizontalAlignment="Left" Margin="12,46,0,0" Name="label1" VerticalAlignment="Top" Width="58">Playlists</Label>
-        <Slider Height="22" Margin="99,46,12,0" Name="slider1" VerticalAlignment="Top" />
-        <Label Height="47" Margin="216,5,200,0" Name="label2" VerticalAlignment="Top" FontSize="24">Song Title</Label>
-        <ListView Margin="99,72,12,12" Name="listView1" >
+        <Slider Height="22" Margin="99,46,12,0" Name="slider1" 
+                VerticalAlignment="Top" Value="{Binding Path=CurrentSong.SongPosition}"
+                Maximum="100" />
+        <Label Height="47" Margin="126,5,26,0" Name="label2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="24" 
+            Content="{Binding Path=CurrentSong.SongTitle}" />
+        
+        <ListView Margin="99,72,12,12" Name="listView1" 
+                  ItemsSource="{Binding ElementName=lbPlaylists, Path=SelectedItem.Songs}" >
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Header="Title"/>
-                    <GridViewColumn Header="Album"/>
-                    <GridViewColumn Header="Artist"/>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=Title}" />
+                    <GridViewColumn Header="Album" DisplayMemberBinding="{Binding Path=Album}" />
+                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Path=Artist}" />
                 </GridView>
             </ListView.View>
         </ListView>
