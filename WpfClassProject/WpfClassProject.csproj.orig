@@ -112,22 +112,14 @@
     <Resource Include="AssignmentReferences\Week2Goal.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
+=======
     <Resource Include="AssignmentReferences\Week4Goal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="square.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Previous.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Next.bmp" />
+>>>>>>> 88e8724e3cc3f070a7e8a22fe275ceb68b51e2d7
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
