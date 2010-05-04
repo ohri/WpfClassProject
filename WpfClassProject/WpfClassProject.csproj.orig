@@ -37,6 +37,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -77,7 +79,12 @@
     <Compile Include="DataContexts\IPlaylist.cs" />
     <Compile Include="DataContexts\IShellDataContext.cs" />
     <Compile Include="DataContexts\ISong.cs" />
+    <Compile Include="DataContexts\PlayCommandParameter.cs" />
     <Compile Include="DataContexts\PlayStatus.cs" />
+    <Compile Include="PlayerControl.xaml.cs">
+      <DependentUpon>PlayerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayPauseStopButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,14 +119,34 @@
     <Resource Include="AssignmentReferences\Week2Goal.png" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+    <Page Include="PlayerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-=======
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="AssignmentReferences\Week4Goal.png" />
->>>>>>> 88e8724e3cc3f070a7e8a22fe275ceb68b51e2d7
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Resource Include="square.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Previous.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Next.bmp" />
+=======
+    <Resource Include="AssignmentReferences\PlayerControl.png" />
+>>>>>>> 9befd2e364a9b834e45d827534aee99dd6b6c344
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

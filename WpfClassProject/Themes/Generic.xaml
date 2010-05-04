@@ -16,4 +16,28 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="RoundButton" BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Viewbox>
+                            <Canvas Width="100" Height="100">
+                                <Ellipse Fill="{TemplateBinding Control.Background}" Width="100" Height="100"/>
+                            </Canvas>
+                        </Viewbox>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Content="{TemplateBinding Button.Content}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush GradientOrigin=".5,.5" Center=".5,.5" RadiusX=".5" RadiusY=".5">
+                    <GradientStop Color="Black" Offset="0" />
+                    <GradientStop Color="White" Offset="1.0" />
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

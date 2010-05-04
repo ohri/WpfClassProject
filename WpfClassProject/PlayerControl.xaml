@@ -3,6 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="300" Width="300">
     <Grid>
-            
+        <Button Width="20" Style="{StaticResource RoundButton}" HorizontalAlignment="Left" Margin="17,36,0,0" Name="button1" VerticalAlignment="Top" Height="30">
+            <Image Source="previous.bmp" Width="12"/>
+        </Button>
+        <Button Width="20" Style="{StaticResource RoundButton}" HorizontalAlignment="Right" Margin="0,36,17,0" Name="button2" VerticalAlignment="Top" Height="30">
+            <Image Source="next.bmp" Width="12"/>
+        </Button>
+        <Button Width="45" Style="{StaticResource RoundButton}" HorizontalAlignment="Left" Margin="43,31,0,0" Name="button3" VerticalAlignment="Top" Height="40">
+            <Image Source="square.bmp" Width="12"/>
+        </Button>
+        <Slider Height="26" Margin="0,67,12,0" Name="slider1" 
+                VerticalAlignment="Top" Value="{Binding Path=CurrentSong.SongPosition}"
+                Maximum="100" Grid.Column="1" Grid.RowSpan="2" />
+        <Border BorderThickness="2" Margin="14,6,12,24.974" Background="LightGray" 
+                BorderBrush="DarkGray" Style="{StaticResource RoundedCorners}" Grid.Column="1">
+            <Label Name="label2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="28" 
+                Content="{Binding Path=CurrentSong.SongTitle}" />
+        </Border>
+
     </Grid>
 </UserControl>
