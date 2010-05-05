@@ -1,10 +1,10 @@
 ﻿<Window x:Class="WpfClassProject.Shell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:c="clr-namespace:WpfClassProject.DataContexts.DesignTimeContexts"
-    xmlns:m="clr-namespace:WpfClassProject"
+    xmlns:Contexts="clr-namespace:WpfClassProject.DataContexts.DesignTimeContexts"
+    xmlns:Controls="clr-namespace:WpfClassProject"
     xmlns:Converters="clr-namespace:WpfClassProject.Converters"
-    Title="WpfTunes" Height="498" Width="647">
+    Title="WpfTunes" Height="500" Width="500" MinWidth="500" MinHeight="500">
     
     <Window.Resources>
         <DataTemplate x:Key="PlaylistItemTemplate">
@@ -32,23 +32,32 @@
     
     <Grid Style="{StaticResource GrayishBackground}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="133*" />
+            <ColumnDefinition Width="133*" MinWidth="133" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="492*" />
+            <ColumnDefinition Width="492*" MinWidth="300" />
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="100*" />
+            <RowDefinition Height="100*" MaxHeight="100"/>
             <RowDefinition Height="360*" />
         </Grid.RowDefinitions>
         
         <Grid.DataContext>
-            <c:ShellDesignData />
+            <Contexts:ShellDesignData />
         </Grid.DataContext>
         
-        <m:PlayerControl Grid.ColumnSpan="3" Margin="12,0,12,13" DataContext="{Binding CurrentSong}">
-
-        </m:PlayerControl>
+        <Controls:PlayerControl Grid.ColumnSpan="3" Margin="12,0,12,13" DataContext="{Binding CurrentSong}">
+            <Controls:PlayerControl.PlayCommandParameter>
+                <MultiBinding>
+                    <MultiBinding.Converter>
+                        <Converters:PlayParameterConverter/>
+                    </MultiBinding.Converter>
+                    <Binding Path="CurrentSong"/>
+                    <Binding Path="SelectedItem" ElementName="listBox"/>
+                    <Binding Path="SelectedItem" ElementName="listView"/>
+                </MultiBinding>
+            </Controls:PlayerControl.PlayCommandParameter>
+        </Controls:PlayerControl>
 
         <Label Grid.Row="1" Style="{StaticResource WhiteLabel}" Height="25" HorizontalAlignment="Left" Margin="35,6,0,0" Name="label1" VerticalAlignment="Top" Width="58">Playlists</Label>
         <ListBox Grid.Row="1" Margin="0,28,0,0" Name="lbPlaylists" 

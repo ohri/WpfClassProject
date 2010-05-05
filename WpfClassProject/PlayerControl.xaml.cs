@@ -25,10 +25,15 @@ namespace WpfClassProject
             InitializeComponent();
         }
 
+        public static readonly DependencyProperty PlayCommandParameterProperty =
+            DependencyProperty.Register("PlayCommandParameter",
+        typeof(PlayCommandParameter),
+        typeof(PlayerControl));
+
         public PlayCommandParameter PlayCommandParameter
         {
             get { return PlayCommandParameter; }
-            set { PlayCommandParameter = value;}
+            set { PlayCommandParameter = value; }
         }
     }
 }
