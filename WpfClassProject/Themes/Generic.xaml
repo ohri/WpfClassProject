@@ -3,31 +3,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:WpfClassProject">
 
-
-    <Style TargetType="{x:Type local:PlayPauseStopButton}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:PlayPauseStopButton}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+    <Style x:Key="RoundedCorners" TargetType="Border">
+        <Setter Property="CornerRadius" Value="5,5,5,5" />
     </Style>
-    <Style x:Key="RoundButton" BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+    <Style x:Key="RoundButton" TargetType="{x:Type Button}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
                         <Viewbox>
                             <Canvas Width="100" Height="100">
-                                <Ellipse Fill="{TemplateBinding Control.Background}" Width="100" Height="100"/>
+                                <Ellipse Fill="{TemplateBinding Background}" Width="100" Height="100"/>
                             </Canvas>
                         </Viewbox>
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Content="{TemplateBinding Button.Content}"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <RadialGradientBrush GradientOrigin=".5,.5" Center=".5,.5" RadiusX=".5" RadiusY=".5">
+                                        <GradientStop Color="Gray" Offset="0" />
+                                        <GradientStop Color="White" Offset="1.0" />
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <RadialGradientBrush GradientOrigin=".5,.5" Center=".5,.5" RadiusX=".5" RadiusY=".5">
+                                        <GradientStop Color="Red" Offset="0" />
+                                        <GradientStop Color="White" Offset="1.0" />
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

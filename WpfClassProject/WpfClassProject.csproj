@@ -84,6 +84,7 @@
     <Compile Include="PlayerControl.xaml.cs">
       <DependentUpon>PlayerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\PlayParameterConverter.cs" />
     <Compile Include="PlayPauseStopButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -139,13 +140,19 @@
     <Resource Include="AssignmentReferences\PlayerControl.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="square.bmp" />
+    <Resource Include="Images\square.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Previous.bmp" />
+    <Resource Include="Images\Next.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Next.bmp" />
+    <Resource Include="Images\Previous.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Play.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pause.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

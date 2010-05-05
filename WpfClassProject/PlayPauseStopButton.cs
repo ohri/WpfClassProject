@@ -11,43 +11,91 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfClassProject.DataContexts;
 
 namespace WpfClassProject
 {
-    /// <summary>
-    /// Follow steps 1a or 1b and then 2 to use this custom control in a XAML file.
-    ///
-    /// Step 1a) Using this custom control in a XAML file that exists in the current project.
-    /// Add this XmlNamespace attribute to the root element of the markup file where it is 
-    /// to be used:
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:WpfClassProject"
-    ///
-    ///
-    /// Step 1b) Using this custom control in a XAML file that exists in a different project.
-    /// Add this XmlNamespace attribute to the root element of the markup file where it is 
-    /// to be used:
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:WpfClassProject;assembly=WpfClassProject"
-    ///
-    /// You will also need to add a project reference from the project where the XAML file lives
-    /// to this project and Rebuild to avoid compilation errors:
-    ///
-    ///     Right click on the target project in the Solution Explorer and
-    ///     "Add Reference"->"Projects"->[Browse to and select this project]
-    ///
-    ///
-    /// Step 2)
-    /// Go ahead and use your control in the XAML file.
-    ///
-    ///     <MyNamespace:PlayPauseStopButton/>
-    ///
-    /// </summary>
     public class PlayPauseStopButton : Button
     {
         static PlayPauseStopButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PlayPauseStopButton), new FrameworkPropertyMetadata(typeof(PlayPauseStopButton)));
         }
+
+        public static readonly DependencyProperty StopCommandProperty =
+            DependencyProperty.Register("StopCommand",
+                                        typeof(ICommand),
+                                        typeof(PlayPauseStopButton),
+                                        new PropertyMetadata(OnCommandChanged));
+        public ICommand StopCommand
+        {
+            get { return (ICommand)GetValue(StopCommandProperty); }
+            set { SetValue(StopCommandProperty, value); }
+        }
+        public static readonly DependencyProperty PlayCommandProperty =
+            DependencyProperty.Register("PlayCommand",
+                                typeof(ICommand),
+                                typeof(PlayPauseStopButton),
+                                new PropertyMetadata(OnCommandChanged));
+        public ICommand PlayCommand
+        {
+            get { return (ICommand)GetValue(PlayCommandProperty); }
+            set { SetValue(PlayCommandProperty, value); }
+        }
+        public static readonly DependencyProperty PauseCommandProperty =
+            DependencyProperty.Register("PauseCommand",
+                       typeof(ICommand),
+                       typeof(PlayPauseStopButton),
+                       new PropertyMetadata(OnCommandChanged));
+        public ICommand PauseCommand
+        {
+            get { return (ICommand)GetValue(PauseCommandProperty); }
+            set { SetValue(PauseCommandProperty, value); }
+        }
+
+        public PlayStatus NextAction
+        {
+            get
+            {
+                return (PlayStatus)GetValue(NextActionProperty);
+            }
+            set
+            {
+                SetValue(NextActionProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty NextActionProperty =
+            DependencyProperty.Register("NextAction",
+               typeof(PlayStatus),
+               typeof(PlayPauseStopButton) );
+
+        private static void OnCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var self = d as PlayPauseStopButton;
+            if (self == null) return;
+            var newCommand = e.NewValue as ICommand;
+            if (newCommand != null)
+                newCommand.CanExecuteChanged += (s, _) => self.UpdateState();
+        }
+
+        private PlayStatus UpdateState()
+        {
+            // play -> pause -> stop
+            if (NextAction == PlayStatus.Paused)
+            {
+                NextAction = PlayStatus.Stopped;
+            }
+            else if (NextAction == PlayStatus.Stopped)
+            {
+                NextAction = PlayStatus.Playing;
+            }
+            else
+            {
+                NextAction = PlayStatus.Paused;
+            }
+            return NextAction;
+        }
+
     }
 }

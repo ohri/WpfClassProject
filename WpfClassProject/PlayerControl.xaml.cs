@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfClassProject.DataContexts;
 
 namespace WpfClassProject
 {
@@ -22,6 +23,12 @@ namespace WpfClassProject
         public PlayerControl()
         {
             InitializeComponent();
+        }
+
+        public PlayCommandParameter PlayCommandParameter
+        {
+            get { return PlayCommandParameter; }
+            set { PlayCommandParameter = value;}
         }
     }
 }
