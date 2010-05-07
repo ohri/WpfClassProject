@@ -81,10 +81,18 @@
     <Compile Include="DataContexts\ISong.cs" />
     <Compile Include="DataContexts\PlayCommandParameter.cs" />
     <Compile Include="DataContexts\PlayStatus.cs" />
+<<<<<<< HEAD
     <Compile Include="PlayerControl.xaml.cs">
       <DependentUpon>PlayerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\PlayParameterConverter.cs" />
     <Compile Include="PlayPauseStopButton.cs" />
+=======
+    <Compile Include="DataContexts\RuntimeContexts\ShellContext.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\WpfTunesPlayer.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\Playlist.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\Song.cs" />
+>>>>>>> abac5ad88263be0d0030cf9838286db2814a8550
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,6 +106,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RoundImageButton.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -136,17 +145,22 @@
     <Resource Include="AssignmentReferences\Week4Goal.png" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Resource Include="square.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Previous.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Next.bmp" />
-=======
     <Resource Include="AssignmentReferences\PlayerControl.png" />
->>>>>>> 9befd2e364a9b834e45d827534aee99dd6b6c344
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\square.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Next.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Previous.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Play.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Pause.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

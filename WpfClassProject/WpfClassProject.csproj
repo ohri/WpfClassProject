@@ -85,7 +85,12 @@
       <DependentUpon>PlayerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\PlayParameterConverter.cs" />
-    <Compile Include="PlayPauseStopButton.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\ShellContext.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\WpfTunesPlayer.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\Playlist.cs" />
+    <Compile Include="DataContexts\RuntimeContexts\Song.cs" />
+
+        <Compile Include="PlayPauseStopButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
