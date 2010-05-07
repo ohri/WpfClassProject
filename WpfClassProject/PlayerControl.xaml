@@ -7,15 +7,9 @@
         <Grid.Resources>
             <ResourceDictionary Source="themes/Generic.xaml" />
         </Grid.Resources>
-        <Button Width="20" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="11.5,38.5,0,36.5" Name="PreviousButton" VerticalAlignment="Top" Height="20">
-            <Image Source="images/previous.gif" Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </Button>
-        <c:PlayPauseStopButton Width="45" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="36.5,26,0,26" x:Name="PPSButton" VerticalAlignment="Top" Height="45">
-            <Image Source="images/square.gif" Width="12" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </c:PlayPauseStopButton>
-        <Button Width="20" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="87.5,38.5,0,36.5" Name="NextButton" VerticalAlignment="Top" Height="20">
-            <Image Source="images/next.gif" Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </Button>
+        <c:RoundImageButton ImageSource="/images/previous.gif" Width="20" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="11.5,38.5,0,36.5" x:Name="PreviousButton" VerticalAlignment="Top" Height="20" />
+        <c:PlayPauseStopButton ImageSource="/images/square.gif" Width="45" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="36.5,26,0,26" x:Name="PPSButton" VerticalAlignment="Top" Height="45" />
+        <c:RoundImageButton ImageSource="/images/next.gif" Width="20" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="87.5,38.5,0,36.5" x:Name="NextButton" VerticalAlignment="Top" Height="20" />
         <Border BorderThickness="2" Margin="124,6,17,0" Background="LightGray" 
                 BorderBrush="DarkGray" Style="{DynamicResource RoundedCorners}" Height="55" VerticalAlignment="Top">
             <Label Name="label2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="28" 

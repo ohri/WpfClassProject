@@ -15,7 +15,7 @@ using WpfClassProject.DataContexts;
 
 namespace WpfClassProject
 {
-    public class PlayPauseStopButton : Button
+    public class PlayPauseStopButton : RoundImageButton
     {
         static PlayPauseStopButton()
         {
@@ -55,14 +55,8 @@ namespace WpfClassProject
 
         public PlayStatus NextAction
         {
-            get
-            {
-                return (PlayStatus)GetValue(NextActionProperty);
-            }
-            set
-            {
-                SetValue(NextActionProperty, value);
-            }
+            get { return (PlayStatus)GetValue(NextActionProperty); }
+            set { SetValue(NextActionProperty, value); }
         }
 
         public static readonly DependencyProperty NextActionProperty =
