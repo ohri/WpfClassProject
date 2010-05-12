@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WpfClassProject.Shell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Contexts="clr-namespace:WpfClassProject.DataContexts.DesignTimeContexts"
+    xmlns:Contexts="clr-namespace:WpfClassProject.DataContexts.RuntimeContexts"
     xmlns:Controls="clr-namespace:WpfClassProject"
     xmlns:Converters="clr-namespace:WpfClassProject.Converters"
     xmlns:trace="clr-namespace:System.Diagnostics;assembly=WindowsBase"
@@ -33,7 +33,7 @@
     </Window.Resources>
 
     <Window.DataContext>
-        <Contexts:ShellDesignData />
+        <Contexts:ShellContext />
     </Window.DataContext>
 
     <Grid Style="{StaticResource GrayishBackground}">
@@ -71,9 +71,14 @@
                  ShowsPreview="False" Width="3" Height="90" />
         
         <ListView Grid.Row="1" Grid.Column="2" Margin="6,3,0,0" Name="lvSongs" 
-                  ItemsSource="{Binding ElementName=lbPlaylists, Path=SelectedItem.Songs}">
+                  ItemsSource="{Binding ElementName=lbPlaylists, Path=SelectedItem.Songs}" >
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick" />
+                </Style>
+            </ListView.Resources>
             <ListView.View>
-                <GridView >
+                <GridView>
                     <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Path=Title}" />
                     <GridViewColumn Header="Album" DisplayMemberBinding="{Binding Path=Album}" />
                     <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Path=Artist}" />

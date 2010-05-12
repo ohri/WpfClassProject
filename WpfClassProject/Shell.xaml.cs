@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfClassProject.DataContexts.RuntimeContexts;
+using WpfClassProject.DataContexts;
 
 namespace WpfClassProject
 {
@@ -24,6 +25,14 @@ namespace WpfClassProject
         {
             InitializeComponent();
             DataContext = new ShellContext();
+        }
+
+        protected void HandleDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var i = sender as ListViewItem;
+            ((ShellContext)DataContext).CurrentSong.PlaySong( (ISong)lvSongs.SelectedItem, 
+                (IPlaylist)lbPlaylists.SelectedItem);
+            e.Handled = true;
         }
     }
 }

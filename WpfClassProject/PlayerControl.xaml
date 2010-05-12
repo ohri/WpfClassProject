@@ -2,14 +2,35 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="clr-namespace:WpfClassProject"
-    MinHeight="100" MinWidth="400">
+    xmlns:trace="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+    MinHeight="100" MinWidth="400"
+    x:Name="thePlayerControl" >
     <Grid>
         <Grid.Resources>
             <ResourceDictionary Source="themes/Generic.xaml" />
         </Grid.Resources>
-        <c:RoundImageButton ImageSource="/images/previous.gif" Width="20" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="11.5,38.5,0,36.5" x:Name="PreviousButton" VerticalAlignment="Top" Height="20" />
-        <c:PlayPauseStopButton ImageSource="/images/square.gif" Width="45" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="36.5,26,0,26" x:Name="PPSButton" VerticalAlignment="Top" Height="45" />
-        <c:RoundImageButton ImageSource="/images/next.gif" Width="20" Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" Margin="87.5,38.5,0,36.5" x:Name="NextButton" VerticalAlignment="Top" Height="20" />
+        
+        <c:RoundImageButton Command="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.BackCommand,trace:PresentationTraceSources.TraceLevel=High}" 
+                            CommandParameter="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter}" 
+                            ImageSource="/images/previous.gif" Width="20" 
+                            Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" 
+                            Margin="11.5,38.5,0,36.5" x:Name="PreviousButton" 
+                            VerticalAlignment="Top" Height="20" />
+            
+        <c:PlayPauseStopButton PlayCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.PlayCommand}" 
+                               PauseCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.PauseCommand}" 
+                               StopCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.StopCommand}" 
+                               CommandParameter="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter}" 
+                               ImageSource="/images/square.gif" Width="45" 
+                               Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" 
+                               Margin="36.5,26,0,26" x:Name="PPSButton" VerticalAlignment="Top" 
+                               Height="45" />
+        <c:RoundImageButton Command="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.NextCommand,trace:PresentationTraceSources.TraceLevel=High}" 
+                            CommandParameter="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter}" 
+                            ImageSource="/images/next.gif" Width="20" 
+                            Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" 
+                            Margin="87.5,38.5,0,36.5" x:Name="NextButton" VerticalAlignment="Top" 
+                            Height="20" />
         <Border BorderThickness="2" Margin="124,6,17,0" Background="LightGray" 
                 BorderBrush="DarkGray" Style="{DynamicResource RoundedCorners}" Height="55" VerticalAlignment="Top">
             <Label Name="label2" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="28" 
