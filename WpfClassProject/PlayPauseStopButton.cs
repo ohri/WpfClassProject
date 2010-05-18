@@ -12,6 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfClassProject.DataContexts;
+using PlayCmmnd = WpfClassProject.Commands.PlayCommand;
+using PauseCmmnd = WpfClassProject.Commands.PauseCommand;
+using StopCmmnd = WpfClassProject.Commands.StopCommand;
 
 namespace WpfClassProject
 {
@@ -75,20 +78,42 @@ namespace WpfClassProject
 
         private PlayStatus UpdateState()
         {
-            // play -> pause -> stop
-            if (NextAction == PlayStatus.Paused)
-            {
-                NextAction = PlayStatus.Stopped;
-            }
-            else if (NextAction == PlayStatus.Stopped)
+            if (((PlayCmmnd)PlayCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Playing;
+//                ImageSource.SetValue(ImageSourceProperty, "Images/play.gif");
+                Console.WriteLine("Set NextAction to playing");
             }
-            else
+            else if (((PauseCmmnd)PauseCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Paused;
+                Console.WriteLine("Set NextAction to paused");
+            }
+            else if (((StopCmmnd)StopCommand).CanExecute(CommandParameter))
+            {
+                NextAction = PlayStatus.Stopped;
+                Console.WriteLine("Set NextAction to stopped");
             }
             return NextAction;
+        }
+
+        protected override void OnClick()
+        {
+            switch (NextAction)
+            {
+                case PlayStatus.Paused:
+                    ((PauseCmmnd)PauseCommand).Execute(CommandParameter);
+                    break;
+
+                case PlayStatus.Playing:
+                    ((PlayCmmnd)PlayCommand).Execute(CommandParameter);
+                    break;
+
+                case PlayStatus.Stopped:
+                    ((StopCmmnd)StopCommand).Execute(CommandParameter);
+                    break;
+            }
+            UpdateState();
         }
 
     }

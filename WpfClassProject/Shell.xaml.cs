@@ -30,8 +30,13 @@ namespace WpfClassProject
         protected void HandleDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var i = sender as ListViewItem;
-            ((ShellContext)DataContext).CurrentSong.PlaySong( (ISong)lvSongs.SelectedItem, 
+            if (((ShellContext)DataContext).CurrentSong != (ISong)lvSongs.SelectedItem)
+            {
+                ((ShellContext)DataContext).CurrentSong.Stop();
+            }
+            ((ShellContext)DataContext).CurrentSong.PlaySong((ISong)lvSongs.SelectedItem,
                 (IPlaylist)lbPlaylists.SelectedItem);
+
             e.Handled = true;
         }
     }

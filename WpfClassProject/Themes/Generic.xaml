@@ -65,14 +65,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:PlayPauseStopButton}">
                     <ControlTemplate.Triggers>
-                        <Trigger Property="local:PlayPauseStopButton.NextAction" Value="Playing">
+                        <Trigger Property="NextAction" Value="Playing">
                             <Setter Property="ImageSource" Value="Images/Play.gif" />
                         </Trigger>
-                        <Trigger Property="local:PlayPauseStopButton.NextAction" Value="Paused">
+                        <Trigger Property="NextAction" Value="Paused">
                             <Setter Property="ImageSource" Value="Images/pause.gif" />
                         </Trigger>
-                        <Trigger Property="local:PlayPauseStopButton.NextAction" Value="Stopped">
-                            <Setter Property="ImageSource" Value="Images/square.gif" />
+                        <Trigger Property="NextAction" Value="Stopped">
+                            <Setter Property="ImageSource" Value="Images/stop.gif" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

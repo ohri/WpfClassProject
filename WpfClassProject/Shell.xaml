@@ -6,7 +6,7 @@
     xmlns:Converters="clr-namespace:WpfClassProject.Converters"
     xmlns:trace="clr-namespace:System.Diagnostics;assembly=WindowsBase"
     x:Name="OuterWindow"
-    Title="WpfTunes" Height="500" Width="500" MinWidth="500" MinHeight="500">
+    Title="WpfTunes" Height="500" Width="750" MinWidth="500" MinHeight="500">
     
     <Window.Resources>
         <DataTemplate x:Key="PlaylistItemTemplate">

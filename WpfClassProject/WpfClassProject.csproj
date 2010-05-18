@@ -150,7 +150,7 @@
     <Resource Include="AssignmentReferences\PlayerControl.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\square.gif" />
+    <Resource Include="Images\stop.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Next.gif" />
