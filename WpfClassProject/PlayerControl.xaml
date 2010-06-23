@@ -13,10 +13,12 @@
         <c:RoundImageButton Command="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.BackCommand,trace:PresentationTraceSources.TraceLevel=High}" 
                             CommandParameter="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter}" 
                             ImageSource="/images/previous.gif" Width="20" 
+                            IsEnabled="True"
+                            
                             Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" 
                             Margin="11.5,38.5,0,36.5" x:Name="PreviousButton" 
                             VerticalAlignment="Top" Height="20" />
-            
+
         <c:PlayPauseStopButton  PlayCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.PlayCommand}" 
                                 PauseCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.PauseCommand}" 
                                 StopCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.StopCommand}" 

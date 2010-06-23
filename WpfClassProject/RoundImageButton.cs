@@ -21,15 +21,11 @@ namespace WpfClassProject
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RoundImageButton), new FrameworkPropertyMetadata(typeof(RoundImageButton)));
         }
 
-        public static readonly DependencyProperty ImageSourceProperty =
+        public static DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("ImageSource",
                typeof(ImageSource),
-               typeof(Button),
-               new PropertyMetadata(OnImageSourceChange));
-        private static void OnImageSourceChange(DependencyObject d, DependencyPropertyChangedEventArgs a)
-        {
-            Console.WriteLine("Hi!");
-        }
+               typeof(Button));
+
         public ImageSource ImageSource
         {
             get { return (ImageSource)GetValue(ImageSourceProperty); }

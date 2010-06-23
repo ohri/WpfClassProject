@@ -20,6 +20,7 @@
                             <Grid Width="100" Height="100">
                                 <Ellipse Fill="{TemplateBinding Background}" Width="100" Height="100"/>
                                 <Image Name="ButtonImage" 
+                                       IsHitTestVisible="False"
                                        Source="{TemplateBinding ImageSource}"
                                        Width="40" Height="40" HorizontalAlignment="Center" 
                                        VerticalAlignment="Center" />

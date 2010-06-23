@@ -7,7 +7,7 @@ using WpfClassProject.DataContexts;
 
 namespace WpfClassProject.Commands
 {
-    class PlayCommand : RoutedCommand
+    class PlayCommand : ICommand
     {
         #region ICommand Members
 
@@ -18,7 +18,7 @@ namespace WpfClassProject.Commands
             {
                 return true;
             }
-            if (p.CurrentSong.Status == PlayStatus.Paused 
+            if (p.CurrentSong.Status == PlayStatus.Paused
                 && p.SelectedPlaylist == p.CurrentSong.CurrentPlaylist)
             {
                 return true;

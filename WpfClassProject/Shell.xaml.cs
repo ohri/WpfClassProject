@@ -37,6 +37,8 @@ namespace WpfClassProject
             ((ShellContext)DataContext).CurrentSong.PlaySong((ISong)lvSongs.SelectedItem,
                 (IPlaylist)lbPlaylists.SelectedItem);
 
+            this.PlayerControl.PPSButton.UpdateState();
+
             e.Handled = true;
         }
     }

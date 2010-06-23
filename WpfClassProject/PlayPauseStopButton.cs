@@ -76,29 +76,35 @@ namespace WpfClassProject
                 newCommand.CanExecuteChanged += (s, _) => self.UpdateState();
         }
 
-        private PlayStatus UpdateState()
+        public PlayStatus UpdateState()
         {
             if (((PlayCmmnd)PlayCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Playing;
-//                ImageSource.SetValue(ImageSourceProperty, "Images/play.gif");
-                Console.WriteLine("Set NextAction to playing");
+                //this.ImageSource.SetValue(ImageSourceProperty, "Images/Play.gif");
+                //SetValue(ImageSourceProperty, (ImageSource)("Images/Play.gif"));
+                //Console.WriteLine("Set NextAction to playing");
             }
             else if (((PauseCmmnd)PauseCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Paused;
-                Console.WriteLine("Set NextAction to paused");
+                //this.ImageSource.SetValue(ImageSourceProperty, "Images/Pause.gif");
+                //SetValue(ImageSourceProperty, (ImageSource)("Images/Pause.gif"));
+                //Console.WriteLine("Set NextAction to paused");
             }
             else if (((StopCmmnd)StopCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Stopped;
-                Console.WriteLine("Set NextAction to stopped");
+                //this.ImageSource.SetValue(ImageSourceProperty, "Images/stop.gif");
+                //SetValue(ImageSourceProperty, (ImageSource)("Images/Stop.gif"));
+                //Console.WriteLine("Set NextAction to stopped");
             }
             return NextAction;
         }
 
         protected override void OnClick()
         {
+            UpdateState();
             switch (NextAction)
             {
                 case PlayStatus.Paused:

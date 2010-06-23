@@ -7,7 +7,7 @@ using WpfClassProject.DataContexts;
 
 namespace WpfClassProject.Commands
 {
-    class StopCommand : RoutedCommand
+    class StopCommand : ICommand
     {
         #region ICommand Members
 
