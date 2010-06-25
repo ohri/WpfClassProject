@@ -15,7 +15,7 @@ namespace WpfClassProject.Commands
         {
             var p = parameter as PlayCommandParameter;
             if (p.CurrentSong.Status == PlayStatus.Playing
-                && p.SelectedPlaylist == p.CurrentSong.CurrentPlaylist)
+                && p.CurrentSong.GetCurrentSong() == p.SelectedSong )
             {
                 return true;
             }

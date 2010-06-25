@@ -22,6 +22,11 @@ namespace WpfClassProject.DataContexts.RuntimeContexts
         private ICommand _backCommand;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ISong GetCurrentSong()
+        {
+            return _currentSong;
+        }
+
         public TimeSpan Length
         {
             get { return _player.NaturalDuration.TimeSpan; }

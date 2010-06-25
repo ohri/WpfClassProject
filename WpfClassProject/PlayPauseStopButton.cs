@@ -81,23 +81,29 @@ namespace WpfClassProject
             if (((PlayCmmnd)PlayCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Playing;
-                //this.ImageSource.SetValue(ImageSourceProperty, "Images/Play.gif");
-                //SetValue(ImageSourceProperty, (ImageSource)("Images/Play.gif"));
-                //Console.WriteLine("Set NextAction to playing");
+                BitmapImage b = new BitmapImage();
+                b.BeginInit();
+                b.UriSource = new Uri("../Images/Play.gif", UriKind.Relative);
+                b.EndInit();
+                ImageSource = b;
             }
             else if (((PauseCmmnd)PauseCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Paused;
-                //this.ImageSource.SetValue(ImageSourceProperty, "Images/Pause.gif");
-                //SetValue(ImageSourceProperty, (ImageSource)("Images/Pause.gif"));
-                //Console.WriteLine("Set NextAction to paused");
+                BitmapImage b = new BitmapImage();
+                b.BeginInit();
+                b.UriSource = new Uri("../Images/Pause.gif", UriKind.Relative);
+                b.EndInit();
+                ImageSource = b;
             }
             else if (((StopCmmnd)StopCommand).CanExecute(CommandParameter))
             {
                 NextAction = PlayStatus.Stopped;
-                //this.ImageSource.SetValue(ImageSourceProperty, "Images/stop.gif");
-                //SetValue(ImageSourceProperty, (ImageSource)("Images/Stop.gif"));
-                //Console.WriteLine("Set NextAction to stopped");
+                BitmapImage b = new BitmapImage();
+                b.BeginInit();
+                b.UriSource = new Uri("../Images/stop.gif", UriKind.Relative);
+                b.EndInit();
+                ImageSource = b;
             }
             return NextAction;
         }

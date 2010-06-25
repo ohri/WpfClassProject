@@ -5,6 +5,7 @@
     xmlns:trace="clr-namespace:System.Diagnostics;assembly=WindowsBase"
     MinHeight="100" MinWidth="400"
     x:Name="thePlayerControl" >
+
     <Grid>
         <Grid.Resources>
             <ResourceDictionary Source="themes/Generic.xaml" />
@@ -14,7 +15,6 @@
                             CommandParameter="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter}" 
                             ImageSource="/images/previous.gif" Width="20" 
                             IsEnabled="True"
-                            
                             Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" 
                             Margin="11.5,38.5,0,36.5" x:Name="PreviousButton" 
                             VerticalAlignment="Top" Height="20" />
@@ -24,8 +24,8 @@
                                 StopCommand="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.StopCommand}" 
                                 CommandParameter="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter}" 
                                 ImageSource="/images/play.gif" Width="45" 
-                                NextAction="Playing"
-                                Style="{DynamicResource RoundButton}" HorizontalAlignment="Left" 
+                                Style="{DynamicResource RoundButton}" NextAction="Playing"
+                                HorizontalAlignment="Left" 
                                 Margin="36.5,26,0,26" x:Name="PPSButton" VerticalAlignment="Top" 
                                 Height="45" />
         <c:RoundImageButton Command="{Binding ElementName=thePlayerControl, Path=PlayCommandParameter.CurrentSong.NextCommand,trace:PresentationTraceSources.TraceLevel=High}" 

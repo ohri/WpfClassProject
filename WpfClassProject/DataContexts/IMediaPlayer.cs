@@ -16,5 +16,6 @@ namespace WpfClassProject.DataContexts
         void Back();
         TimeSpan Length { get; }
         TimeSpan Position { get; }
+        ISong GetCurrentSong();
     }
 }

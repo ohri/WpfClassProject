@@ -14,12 +14,12 @@ namespace WpfClassProject.Commands
         public bool CanExecute(object parameter)
         {
             var p = parameter as PlayCommandParameter;
-            if (p.CurrentSong.Status == PlayStatus.Stopped)
+            if (p.CurrentSong.Status == PlayStatus.Stopped && p.SelectedSong != null )
             {
                 return true;
             }
             if (p.CurrentSong.Status == PlayStatus.Paused
-                && p.SelectedPlaylist == p.CurrentSong.CurrentPlaylist)
+                && p.CurrentSong.GetCurrentSong() == p.SelectedSong)
             {
                 return true;
             }

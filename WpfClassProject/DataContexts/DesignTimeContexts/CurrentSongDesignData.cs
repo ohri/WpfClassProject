@@ -16,6 +16,11 @@ namespace WpfClassProject.DataContexts.DesignTimeContexts
             Position = TimeSpan.FromSeconds(78);
         }
 
+        public ISong GetCurrentSong()
+        {
+            throw new NotImplementedException();
+        }
+
         private double _songPosition;
         public double SongPosition
         {
